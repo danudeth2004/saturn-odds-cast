@@ -1,25 +1,27 @@
- <%= link_to article do %>
-<div id="<%= dom_id article %>" class="border-1 border-gray-200 rounded-xl p-4 shadow-md hover:scale-95 cursor-pointer bg-white">
-    <p>
-        <strong>Title:</strong>
-        <%= article.title %>
-    </p>
+<% if article.status == "published" %>
+  <%= link_to article do %>
+  <div id="<%= dom_id article %>" class="border-1 border-gray-200 rounded-xl p-4 shadow-md hover:scale-95 cursor-pointer bg-white">
+      <p>
+          <strong>Title:</strong>
+          <%= article.title %>
+      </p>
 
-    <p>
-        <strong>Description:</strong>
-        <%= article.description %>
-    </p>
+      <p>
+          <strong>Description:</strong>
+          <%= article.description %>
+      </p>
 
 
-    <p>
-        <strong>Cover Image:</strong>
-        <% if article.cover_image.attached? %>
-          <%= image_tag article.cover_image %>
-        <% else %>
-          No cover image available.
-       <% end %>
-    </p>
-    <p>
-    </p>
-</div>
+      <p>
+          <strong>Cover Image:</strong>
+          <% if article.cover_image.attached? %>
+            <%= image_tag article.cover_image %>
+          <% else %>
+            No cover image available.
+        <% end %>
+      </p>
+      <p>
+      </p>
+  </div>
+  <% end %>
 <% end %>

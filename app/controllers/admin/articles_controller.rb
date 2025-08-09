@@ -23,7 +23,7 @@ module Admin
     # POST /admin/articles or /admin/articles.json
     def create
       @article = Article.new(admin_article_params)
-
+      @article.status = 1
       respond_to do |format|
         if @article.save
           format.html { redirect_to [ :admin, @article ], notice: "Article was successfully created." }
@@ -38,6 +38,7 @@ module Admin
     # PATCH/PUT /admin/articles/1 or /admin/articles/1.json
     def update
       respond_to do |format|
+        @article.status = params[:status]
         if @article.update(admin_article_params)
           format.html { redirect_to [ :admin, @article ], notice: "Article was successfully updated.", status: :see_other }
           format.json { render :show, status: :ok, location: @article }

@@ -25,8 +25,23 @@
     <%= form.label :cover_image, style: "display: block" %>
     <%= form.file_field :cover_image %>
   </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
+  
+  <% if article.persisted? %>
+    <div>
+      <% case article.status %>
+        <% when "waiting_for_review" %>
+          <div>
+            <%= radio_button_tag :status, "published", article.status == "published" %> Approve
+            <%= radio_button_tag :status, "draft", article.status == "draft" %> Reject
+          </div>
+          <div>
+            <%= button_to "Update", [ :admin, article ], method: :put, class: "btn btn-success" %>
+          </div>
+        <% when "draft" %>
+          <%= button_to "Review", [ :admin, article ], params: { status: "waiting_for_review" }, method: :put, class: "btn btn-success" %>
+        <% when "published" %>
+          <%= button_to "Cancel", [ :admin, article ], params: { status: "draft" }, method: :put, class: "btn btn-danger" %>
+      <% end %>
+    </div>
+  <% end %>
 <% end %>
