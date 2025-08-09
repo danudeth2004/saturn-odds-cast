@@ -43,5 +43,7 @@
           <%= button_to "Cancel", [ :admin, article ], params: { status: "draft" }, method: :put, class: "btn btn-danger" %>
       <% end %>
     </div>
+  <% else %>
+    <%= button_to "Create", [ :admin, article ], method: :put, class: "btn btn-success" %>
   <% end %>
 <% end %>
