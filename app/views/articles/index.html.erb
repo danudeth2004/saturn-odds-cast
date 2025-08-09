@@ -1,10 +1,14 @@
 <p style="color: green"><%= notice %></p>
+<div>
+  <div class="flex justify-end">
+  <%= link_to "Login", admin_articles_path, class:"btn" %>
+  </div>
+  <div class="">
+      <div class="bg-gray-100 w-full h-100 mb-10"></div>
+      <% content_for :title, "Articles", class: "text-2xl font-bold" %>
 
-<div class="">
-    <div class="bg-gray-100 w-full h-100 mb-10"></div>
-    <% content_for :title, "Articles", class: "text-2xl font-bold" %>
+      <h1 class="text-2xl font-bold mb-6" >Articles</h1>
 
-    <h1 class="text-2xl font-bold mb-6" >Articles</h1>
-
-    <%= render "articles" %>
+      <%= render "articles" %>
+  </div>
 </div>
