@@ -1,7 +1,16 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @article %>
+<div class="flex flex-col">
+    <p>
+        <strong>Title:</strong>
+        <%= @article.title %>
+    </p>
 
-<div>
-  <%= link_to "Back to articles", articles_path %>
+    <p>
+        <strong>Description:</strong>
+        <%= @article.description %>
+    </p>
+    <p>
+    </p>
+    <%= link_to "Back to articles", articles_path, class: "mt-20 border-1 border-gray" %>
 </div>
