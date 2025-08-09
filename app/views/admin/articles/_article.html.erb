@@ -1,12 +1,19 @@
-<div id="<%= dom_id article %>" class="article">
-  <p>
-    <strong style="color: red">Title:</strong>
-    <%= article.title %>
-  </p>
+ <%= link_to [ :admin, article ] do %>
+ <div id="<%= dom_id article %>" class="border-1 border-gray-200 rounded-xl p-4 shadow-md hover:scale-95 cursor-pointer bg-white">
+     <p>
+         <% if article.cover_image.attached? %>
+         <%= image_tag article.cover_image %>
+         <% else %>
+         No cover image available.
+         <% end %>
+     </p>
+     <p>
+         <%= article.title %>
+     </p>
 
-  <p>
-    <strong style="color: red">Description:</strong>
-    <%= article.description %>
-  </p>
-    <%= link_to "Show this article", [ :admin, article ] %>
-</div>
+     <p>
+         <strong>Description:</strong>
+         <%= article.description %>
+     </p>
+ </div>
+ <% end %>

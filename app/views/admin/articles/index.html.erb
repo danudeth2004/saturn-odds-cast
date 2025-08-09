@@ -9,10 +9,5 @@
         <%= link_to "Create", new_admin_article_path %>
     </div>
 
-
-    <div id="admin_articles">
-        <% @articles.each do |article| %>
-        <%= render article %>
-        <% end %>
-    </div>
+<%= render partial: "articles/articles", locals: { articles: @articles } %>
 </div>

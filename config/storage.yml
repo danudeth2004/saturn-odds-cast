@@ -32,3 +32,13 @@ local:
 #   service: Mirror
 #   primary: local
 #   mirrors: [ amazon, google, microsoft ]
+
+digitalocean:
+  service: S3
+  access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
+  secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
+  region: sgp1
+  bucket: saturnday
+  endpoint: https://sgp1.digitaloceanspaces.com
+  public: true
+  
