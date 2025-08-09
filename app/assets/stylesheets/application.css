@@ -8,3 +8,11 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+.article {
+    padding: 2%;
+    border-style: dashed;
+}
+
+.new-btn {
+}
