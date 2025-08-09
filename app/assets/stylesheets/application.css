@@ -11,7 +11,9 @@
 
 .article {
     padding: 2%;
-    border-style: dashed;
+    border: 1px solid gray;
+    margin-bottom: 10px;
+    border-radius: 10px;
 }
 
 .new-btn {
