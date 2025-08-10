@@ -9,12 +9,6 @@
  * Consider organizing styles into separate files for maintainability.
  */
 
-.article {
-    padding: 2%;
-    border: 1px solid gray;
-    margin-bottom: 10px;
-    border-radius: 10px;
-}
-
-.new-btn {
-}
+ body {
+   font-family: Nunito, sans-serif;
+ }

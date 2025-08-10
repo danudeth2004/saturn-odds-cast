@@ -1,11 +1,11 @@
 <% content_for :title, "New article" %>
 
-<h1>New article</h1>
-
-<%= render "form", article: @article %>
-
-<br>
-
-<div>
-  <%= link_to "Back to articles", admin_articles_path %>
+<div class="py-10 max-sm:px-0 px-[20vw] min-px-20">
+  <div class="flex flex-col justify-center p-10 gap-30">
+    <div class="flex flex-col justify-center">
+    <p class="text-3xl max-sm:text-2xl font-black mx-auto">New article</p>
+    <p class="flex justify-center text-lg text-gray-500 max-sm:text-md font-light text-center">Start sharing your ideas with the world</p>
+    </div>
+    <%= render "form", article: @article %>
+  </div>
 </div>
