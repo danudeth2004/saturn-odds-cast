@@ -4,6 +4,7 @@ class Article < ApplicationRecord
   accepts_nested_attributes_for :content
 
   delegate :title, to: :content
+  # delegate :comments, to: :content
 
   has_one_attached :cover_image
 

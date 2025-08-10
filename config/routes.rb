@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   resources :videos, only: [ :index, :show ]
   resource :session
   resources :passwords, param: :token
