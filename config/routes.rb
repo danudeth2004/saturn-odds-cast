@@ -1,11 +1,19 @@
 Rails.application.routes.draw do
+  resources :videos, only: [ :index, :show ]
   resource :session
   resources :passwords, param: :token
   resources :articles, only: [ :index, :show ]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   namespace :admin do
-    resources :articles
+    resources :videos
+    resources :articles do
+      member do
+        patch :submit
+        patch :approve
+        patch :reject
+      end
+    end
     root "articles#index"
   end
 

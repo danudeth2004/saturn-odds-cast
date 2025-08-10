@@ -1,12 +1,35 @@
 module Admin
   class Admin::ArticlesController < ApplicationController
-    before_action :set_admin_article, only: %i[ show edit update destroy ]
+    before_action :set_admin_article, only: %i[ show edit update destroy submit approve reject ]
 
     # GET /admin/articles or /admin/articles.json
     def index
       @articles = Article.all
     end
 
+    def submit
+      if @article.update(admin_article_params.merge(status: waiting_for_approve))
+        redirect_to [ :admin, @article ], notice: "Article was successfully updated.", status: :see_other
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+      end
+    end
+
+    def approve
+      if @article.update(admin_article_params.merge(status: published))
+        redirect_to [ :admin, @article ], notice: "Article was successfully updated.", status: :see_other
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+      end
+    end
+
+    def reject
+      if @article.update(admin_article_params.merge(status: draft))
+        redirect_to [ :admin, @article ], notice: "Article was successfully updated.", status: :see_other
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+      end
+    end
     # GET /admin/articles/1 or /admin/articles/1.json
     def show
     end
@@ -23,7 +46,12 @@ module Admin
     # POST /admin/articles or /admin/articles.json
     def create
       @article = Article.new(admin_article_params)
-      @article.status = 1
+      if params[:commit_type] == "draft"
+        @article.status = 0
+      else
+        @article.status = 1
+      end
+
       respond_to do |format|
         if @article.save
           format.html { redirect_to [ :admin, @article ], notice: "Article was successfully created." }
@@ -67,7 +95,7 @@ module Admin
 
       # Only allow a list of trusted parameters through.
       def admin_article_params
-        params.expect(article: [ :title, :description, :cover_image ])
+        params.expect(article: [ :title, :description, :cover_image, :status ])
       end
   end
 end
