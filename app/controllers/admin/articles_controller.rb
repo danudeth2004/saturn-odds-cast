@@ -5,6 +5,7 @@ module Admin
     # GET /admin/articles or /admin/articles.json
     def index
       @articles = Article.all
+      # @content = Content.al
     end
 
     def submit
